@@ -17,6 +17,9 @@ export const getAIResponse = async (message: string): Promise<string> => {
   
   try {
     console.log('Creating OpenAI client...');
+    if (!OPENAI_API_KEY) {
+      throw new Error('OpenAI API key is not defined');
+    }
     // Create a new OpenAI client for each request to avoid initialization issues
     const openai = new OpenAI({
       apiKey: OPENAI_API_KEY.trim(),
