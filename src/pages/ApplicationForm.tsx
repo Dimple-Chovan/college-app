@@ -80,10 +80,10 @@ const ApplicationForm: React.FC = () => {
   };
   return (
     <Layout>
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">
+      <div className="p-6 bg-white dark:bg-gray-700 rounded-lg shadow-md transition-colors">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
           Application Form
-          <div className="text-right text-sm font-medium text-gray-600">
+          <div className="text-right text-sm font-medium text-gray-600 dark:text-gray-300">
             Step {step} of {totalSteps} | {calculateFormProgress()}% Completed
           </div>
         </h2>
@@ -91,7 +91,7 @@ const ApplicationForm: React.FC = () => {
           <div className="w-full bg-gray-200 rounded-full h-2.5 mb-2">
             <div className="bg-blue-500 h-2.5 rounded-full" style={{ width: getProgressWidth() }}></div>
           </div>
-          <div className="flex justify-between text-sm font-medium text-gray-600">
+          <div className="flex justify-between text-sm font-medium text-gray-600 dark:text-gray-300">
             <span className={step === 1 ? 'text-blue-500' : ''}>Step 1</span>
             <span className={step === 2 ? 'text-blue-500' : ''}>Step 2</span>
             <span className={step === 3 ? 'text-blue-500' : ''}>Step 3</span>
@@ -99,10 +99,10 @@ const ApplicationForm: React.FC = () => {
         </div>
         {step === 1 && (
           <div>
-            <h3 className="text-xl mb-4">Step 1: Personal Information</h3>
+            <h3 className="text-xl mb-4 text-gray-900 dark:text-white">Step 1: Personal Information</h3>
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-2">
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-900">
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-900 dark:text-gray-200">
                   First name
                 </label>
                 <div className="mt-2">
@@ -111,7 +111,7 @@ const ApplicationForm: React.FC = () => {
                     name="firstName"
                     type="text"
                     autoComplete="given-name"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.firstName}
                     onChange={handleChange}
                   />
@@ -119,7 +119,7 @@ const ApplicationForm: React.FC = () => {
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-900">
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-900 dark:text-gray-200">
                   Last name
                 </label>
                 <div className="mt-2">
@@ -128,7 +128,7 @@ const ApplicationForm: React.FC = () => {
                     name="lastName"
                     type="text"
                     autoComplete="family-name"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.lastName}
                     onChange={handleChange}
                   />
@@ -136,7 +136,7 @@ const ApplicationForm: React.FC = () => {
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-gray-200">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -145,7 +145,7 @@ const ApplicationForm: React.FC = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.email}
                     onChange={handleChange}
                   />
@@ -161,7 +161,7 @@ const ApplicationForm: React.FC = () => {
                     id="gender"
                     name="gender"
                     autoComplete="gender"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.gender}
                     onChange={handleChange}
                   >
@@ -183,7 +183,7 @@ const ApplicationForm: React.FC = () => {
                     name="streetAddress"
                     type="text"
                     autoComplete="street-address"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.streetAddress}
                     onChange={handleChange}
                   />
@@ -200,7 +200,7 @@ const ApplicationForm: React.FC = () => {
                     name="city"
                     type="text"
                     autoComplete="address-level2"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.city}
                     onChange={handleChange}
                   />
@@ -217,7 +217,7 @@ const ApplicationForm: React.FC = () => {
                     name="region"
                     type="text"
                     autoComplete="address-level1"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.region}
                     onChange={handleChange}
                   />
@@ -234,7 +234,7 @@ const ApplicationForm: React.FC = () => {
                     name="postalCode"
                     type="text"
                     autoComplete="postal-code"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.postalCode}
                     onChange={handleChange}
                   />
@@ -250,7 +250,7 @@ const ApplicationForm: React.FC = () => {
                     id="country"
                     name="country"
                     autoComplete="country-name"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 dark:border-gray-500 rounded dark:bg-gray-600 dark:text-white"
                     value={formData.country}
                     onChange={handleChange}
                   >
@@ -267,12 +267,15 @@ const ApplicationForm: React.FC = () => {
               </div>
             </div>
             <div className="flex justify-between mt-4">
-              <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
-                Save Draft
-              </button>
-              <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                Next
-              </button>
+              <div>  {/* Empty div for step 1 since there's no Previous button */}</div>
+              <div className="flex space-x-2">
+                <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
+                  Save Draft
+                </button>
+                <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -314,15 +317,17 @@ const ApplicationForm: React.FC = () => {
               <DocumentUpload />
             </div>
             <div className="flex justify-between mt-4">
-              <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
-                Save Draft
-              </button>
               <button onClick={handlePrev} className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600">
                 Previous
               </button>
-              <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                Next
-              </button>
+              <div className="flex space-x-2">
+                <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
+                  Save Draft
+                </button>
+                <button onClick={handleNext} className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -415,15 +420,17 @@ const ApplicationForm: React.FC = () => {
               </div>
             </div>
             <div className="flex justify-between mt-4">
-              <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
-                Save Draft
-              </button>
               <button onClick={handlePrev} className="bg-gray-500 text-white p-2 rounded hover:bg-gray-600">
                 Previous
               </button>
-              <button disabled={isSubmitDisabled} onClick={handleSubmit} className="bg-green-500 text-white p-2 rounded hover:bg-green-600">
-                Submit
-              </button>
+              <div className="flex space-x-2">
+                <button onClick={handleSaveDraft} className="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">
+                  Save Draft
+                </button>
+                <button disabled={isSubmitDisabled} onClick={handleSubmit} className="bg-green-500 text-white p-2 rounded hover:bg-green-600">
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
         )}

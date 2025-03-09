@@ -1,6 +1,6 @@
 # College App
 
-This is a React application named "college-mgmt" built with TypeScript and styled using Tailwind CSS.
+This is a React application named "college-app" built with TypeScript and styled using Tailwind CSS.
 
 ## Getting Started
 
@@ -24,7 +24,7 @@ Make sure you have the following installed on your machine:
 2. Navigate to the project directory:
 
    ```
-   cd college-mgmt
+   cd college-app
    ```
 
 3. Install the dependencies:

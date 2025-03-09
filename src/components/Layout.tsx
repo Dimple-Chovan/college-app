@@ -4,6 +4,7 @@ import { BellIcon, UserCircleIcon, SunIcon, MoonIcon } from '@heroicons/react/so
 
 import ChatbotIcon from './ChatbotIcon';
 import ChatbotModal from './ChatbotModal';
+import { useTheme } from '../context/ThemeContext';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
@@ -20,19 +21,9 @@ const userNavigation = [
 const DashboardLayout = ({ children }: any) => {
   const location = useLocation();
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark');
+  const { theme, toggleTheme } = useTheme();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -54,9 +45,9 @@ const DashboardLayout = ({ children }: any) => {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+    <div className="min-h-screen bg-gray-50 dark:bg-darkbg-900 text-gray-900 dark:text-darktext-100">
       {/* Navbar */}
-      <nav className="bg-gray-800 fixed top-0 w-full z-50 shadow-md dark:bg-gray-900">
+      <nav className="bg-indigo-600 dark:bg-darkbg-800 fixed top-0 w-full z-50 shadow-md transition-colors">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div className="hidden md:block ml-10 space-x-4">
@@ -65,7 +56,9 @@ const DashboardLayout = ({ children }: any) => {
                   key={item.name}
                   to={item.href}
                   className={`rounded-md px-3 py-2 text-sm font-medium ${
-                    item.href === location.pathname ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    item.href === location.pathname 
+                      ? 'bg-indigo-700 dark:bg-indigo-900 text-white' 
+                      : 'text-white hover:bg-indigo-500 dark:hover:bg-indigo-800'
                   }`}
                 >
                   {item.name}
@@ -76,10 +69,11 @@ const DashboardLayout = ({ children }: any) => {
           <div className="flex items-center space-x-4">
             {/* Dark Mode Toggle */}
             <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="p-2 rounded-full bg-gray-800 text-gray-400 hover:text-white focus:outline-none"
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-white hover:bg-indigo-500 dark:hover:bg-indigo-800 focus:outline-none transition-colors"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {darkMode ? <SunIcon className="w-6 h-6" /> : <MoonIcon className="w-6 h-6" />}
+              {theme === 'dark' ? <SunIcon className="w-6 h-6" /> : <MoonIcon className="w-6 h-6" />}
             </button>
 
             {/* Notifications */}
@@ -97,7 +91,7 @@ const DashboardLayout = ({ children }: any) => {
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg shadow-lg overflow-hidden">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-darkbg-800 border dark:border-gray-700 rounded-lg shadow-lg overflow-hidden transition-colors">
                   {userNavigation.map((item) => (
                     <Link
                       key={item.name}
@@ -115,9 +109,9 @@ const DashboardLayout = ({ children }: any) => {
       </nav>
 
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-16 z-40 dark:bg-gray-800">
+      <header className="bg-white dark:bg-darkbg-800 shadow-sm sticky top-16 z-40 transition-colors">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-darktext-100">
             {getTitle()}
           </h1>
         </div>

@@ -2,4 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles can be added below this line */
+/* Custom styles for light and dark mode */
+@layer base {
+  /* Smooth transitions when switching themes */
+  * {
+    @apply transition-colors duration-200 ease-in-out;
+  }
+
+  /* Custom scrollbar for better visibility in dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Light mode scrollbar */
+  .light ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  .light ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 hover:bg-gray-500 rounded;
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-darkbg-800;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 hover:bg-gray-500 rounded;
+  }
+
+  /* Form elements in dark mode */
+  .dark input, .dark select, .dark textarea {
+    @apply bg-gray-600 border-gray-500 text-white;
+  }
+
+  /* Focus styles for form elements in dark mode */
+  .dark input:focus, .dark select:focus, .dark textarea:focus {
+    @apply border-indigo-500 ring-indigo-500;
+  }
+
+  /* Card styles for dark mode */
+  .dark .card {
+    @apply bg-darkbg-700 border-gray-700;
+  }
+
+  /* Button styles that work well in both modes */
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-700 dark:hover:bg-indigo-800;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-darktext-100;
+  }
+
+  /* Table styles for dark mode */
+  .dark table {
+    @apply bg-darkbg-800 border-gray-700;
+  }
+
+  .dark th {
+    @apply bg-darkbg-700 text-darktext-100;
+  }
+
+  .dark td {
+    @apply border-gray-700 text-darktext-100;
+  }
+
+  /* Alternate row colors for tables in dark mode */
+  .dark tr:nth-child(even) {
+    @apply bg-darkbg-800;
+  }
+
+  .dark tr:nth-child(odd) {
+    @apply bg-darkbg-700;
+  }
+
+  /* Hover state for table rows in dark mode */
+  .dark tr:hover {
+    @apply bg-gray-700;
+  }
+}
