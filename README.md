@@ -36,7 +36,8 @@ Make sure you have the following installed on your machine:
 4. Use openai in AI chat:
 
    ```
-   update openai key to .env file
+   #update openai key to .env file
+   REACT_APP_OPENAI_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
    ```
 
 ### Running the Application
@@ -70,7 +71,3 @@ This will generate a `build` folder with the optimized production files.
 ### Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request.
-
-### License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
