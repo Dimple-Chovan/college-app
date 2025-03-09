@@ -33,6 +33,12 @@ Make sure you have the following installed on your machine:
    npm install
    ```
 
+4. Use openai in AI chat:
+
+   ```
+   update openai key to .env file
+   ```
+
 ### Running the Application
 
 To start the development server, run:
